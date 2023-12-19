@@ -1,4 +1,4 @@
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import { Form, Formik } from "formik"
 import ChavesInput from "./ChavesInput";
 
@@ -14,8 +14,6 @@ const ChavesForm = () => {
       }}
 
       // validationSchema={subscribeSchema}
-
-      enableReinitialize
 
       onSubmit={async (values, { setValues }) => {
         const response = await fetch(`http://localhost:3002/chaves?pro_codigo=${values.pro_codigo}`)
@@ -67,15 +65,16 @@ const ChavesForm = () => {
             errors={errors.cod_jas}
           />
 
+          <Text><span>Marca: </span></Text>
+          <Text><span>Subgrupo: </span></Text>
+
           <Flex w='full' gap={2} mt={4}>
             <Button
               flex={1}
               type="reset"
               letterSpacing='wider'
               colorScheme="blue"
-              borderRadius='none'
               variant='outline'
-              textTransform='uppercase'
             >
               Limpar
             </Button>
@@ -85,8 +84,6 @@ const ChavesForm = () => {
               type='submit'
               letterSpacing='wider'
               colorScheme='blue'
-              borderRadius='none'
-              textTransform='uppercase'
               isLoading={isSubmitting}
               loadingText='Pesquisando'
             >
