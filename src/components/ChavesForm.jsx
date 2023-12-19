@@ -35,6 +35,7 @@ const ChavesForm = () => {
       {({ isSubmitting, errors, values, handleChange }) => (
         <Flex
           flexDirection='column'
+          gap={4}
           as={Form}
         >
           <ChavesInput
@@ -69,10 +70,12 @@ const ChavesForm = () => {
             errors={errors.cod_jas}
           />
 
-          <Text><span>Marca: </span>{values.marca}</Text>
-          <Text><span>Subgrupo: </span>{values.subgrupo}</Text>
+          <Flex flexDirection='column'>
+            <Text><span>Marca: </span>{values.marca}</Text>
+            <Text><span>Subgrupo: </span>{values.subgrupo}</Text>
+          </Flex>
 
-          <Flex w='full' gap={2} mt={6}>
+          <Flex w='full' gap={2} mt={2}>
             <Button
               flex={1}
               type="reset"

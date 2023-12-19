@@ -16,7 +16,7 @@ const ChavesInput = ({ label, name, value, type = 'text', icon, placeholder, err
   return (
     <FormControl>
       {label !== undefined &&
-        <FormLabel letterSpacing='wider' fontFamily={`'Anton', sans-serif`}>{label}</FormLabel>
+        <FormLabel mb={0} letterSpacing='wider' fontFamily={`'Anton', sans-serif`}>{label}</FormLabel>
       }
 
       <InputGroup>
@@ -37,10 +37,8 @@ const ChavesInput = ({ label, name, value, type = 'text', icon, placeholder, err
           onChange={handleChange}
         />
       </InputGroup>
-      {errors ?
+      {errors &&
         <FormHelperText>{errors}</FormHelperText>
-        :
-        <FormHelperText><br /></FormHelperText>
       }
     </FormControl>
   )
