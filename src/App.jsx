@@ -29,18 +29,16 @@ const App = () => {
         flexDirection='column'
         py={[4, 6]}
         px={[4, 8]}
-        gap={8}
+        gap={6}
       >
 
         <Flex gap={4} flexDirection='column' alignItems='center'>
-          <Flex justify='center' w={'85%'}>
+          <Flex justify='center' w={'100%'}>
             <Image src={logo} alt='Logo Dovale' />
           </Flex>
           <Heading
             fontSize='x-large'
-            textTransform='uppercase'
             textAlign='center'
-            fontWeight='extrabold'
           >
             Conversão de Chaves
           </Heading>
