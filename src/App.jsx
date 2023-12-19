@@ -39,6 +39,7 @@ const App = () => {
           <Heading
             fontSize='x-large'
             textAlign='center'
+            color='gray.700'
           >
             Conversão de Chaves
           </Heading>

@@ -6,7 +6,7 @@ const theme = extendTheme({
     Heading: {
       baseStyle: {
         textTransform: 'uppercase',
-        fontWeight: 'bold'
+        fontWeight: 'extrabold'
       },
     },
     Button: {
