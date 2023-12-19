@@ -1,51 +1,36 @@
-import { useState } from "react";
 import { Button, Flex } from "@chakra-ui/react";
 import { Form, Formik } from "formik"
 import ChavesInput from "./ChavesInput";
 
 const ChavesForm = () => {
 
-  const [keys, setKeys] = useState([{
-    pro_codigo: '',
-    cod_gold: '',
-    cod_land: '',
-    cod_jas: ''
-  }]);
-
-  const initialValues = {
-    pro_codigo: '',
-    cod_gold: '',
-    cod_land: '',
-    cod_jas: ''
-  }
-
-  // const updateKeys = async () => {
-  //   await fetch(`http://localhost:3002/chaves?pro_codigo=${values.pro_codigo}`)
-  //     .then(response => response.json())
-  //     .then(data => setKeys(data))
-  // }
-
   return (
     <Formik
-      initialValues={initialValues || keys}
-      // validationSchema={subscribeSchema}
-
-      // onSubmit={(values, { setSubmitting }) => {
-      //   setTimeout(() => {
-      //     alert(JSON.stringify(values, null, 2));
-      //     setSubmitting(false);
-      //   }, 400);
-      // }}
-
-      onSubmit={async (values) => {
-        await fetch(`http://localhost:3002/chaves?pro_codigo=${values.pro_codigo}`)
-          .then(response => response.json())
-          .then(data => setKeys(data))
+      initialValues={{
+        pro_codigo: '',
+        cod_gold: '',
+        cod_land: '',
+        cod_jas: ''
       }}
 
+      // validationSchema={subscribeSchema}
+
       enableReinitialize
+
+      onSubmit={async (values, { setValues }) => {
+        const response = await fetch(`http://localhost:3002/chaves?pro_codigo=${values.pro_codigo}`)
+
+        const data = await response.json()
+
+        setValues({
+          "pro_codigo": data[0].pro_codigo === null ? '' : data[0].pro_codigo,
+          "cod_gold": data[0].cod_gold === null ? '' : data[0].cod_gold,
+          "cod_land": data[0].cod_land === null ? '' : data[0].cod_land,
+          "cod_jas": data[0].cod_jas === null ? '' : data[0].cod_jas
+        })
+      }}
     >
-      {({ isSubmitting, errors, handleChange }) => (
+      {({ isSubmitting, errors, values, handleChange }) => (
         <Flex
           flexDirection='column'
           as={Form}
@@ -53,32 +38,32 @@ const ChavesForm = () => {
           <ChavesInput
             label='Cód. Dovale: '
             name='pro_codigo'
-            type='number'
             onChange={handleChange}
+            value={values.pro_codigo}
             errors={errors.pro_codigo}
           />
 
           <ChavesInput
             label='Cód. Gold: '
             name='cod_gold'
-            type='number'
             onChange={handleChange}
+            value={values.cod_gold}
             errors={errors.cod_gold}
           />
 
           <ChavesInput
             label='Cód. Land: '
             name='cod_land'
-            type='number'
             onChange={handleChange}
+            value={values.cod_land}
             errors={errors.cod_land}
           />
 
           <ChavesInput
             label='Cód. Jas: '
             name='cod_jas'
-            type='number'
             onChange={handleChange}
+            value={values.cod_jas}
             errors={errors.cod_jas}
           />
 
