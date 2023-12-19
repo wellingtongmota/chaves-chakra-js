@@ -10,7 +10,9 @@ const ChavesForm = () => {
         pro_codigo: '',
         cod_gold: '',
         cod_land: '',
-        cod_jas: ''
+        cod_jas: '',
+        marca: '',
+        subgrupo: ''
       }}
 
       // validationSchema={subscribeSchema}
@@ -24,7 +26,9 @@ const ChavesForm = () => {
           "pro_codigo": data[0].pro_codigo === null ? '' : data[0].pro_codigo,
           "cod_gold": data[0].cod_gold === null ? '' : data[0].cod_gold,
           "cod_land": data[0].cod_land === null ? '' : data[0].cod_land,
-          "cod_jas": data[0].cod_jas === null ? '' : data[0].cod_jas
+          "cod_jas": data[0].cod_jas === null ? '' : data[0].cod_jas,
+          "marca": data[0].marca === null ? '' : data[0].marca,
+          "subgrupo": data[0].pro_subgrupo === null ? '' : data[0].pro_subgrupo
         })
       }}
     >
@@ -65,10 +69,10 @@ const ChavesForm = () => {
             errors={errors.cod_jas}
           />
 
-          <Text><span>Marca: </span></Text>
-          <Text><span>Subgrupo: </span></Text>
+          <Text><span>Marca: </span>{values.marca}</Text>
+          <Text><span>Subgrupo: </span>{values.subgrupo}</Text>
 
-          <Flex w='full' gap={2} mt={4}>
+          <Flex w='full' gap={2} mt={6}>
             <Button
               flex={1}
               type="reset"
