@@ -1,29 +1,49 @@
-import {
-  Button,
-  Flex,
-} from "@chakra-ui/react";
+import { useState } from "react";
+import { Button, Flex } from "@chakra-ui/react";
 import { Form, Formik } from "formik"
 import ChavesInput from "./ChavesInput";
 
 const ChavesForm = () => {
+
+  const [keys, setKeys] = useState([{
+    pro_codigo: '',
+    cod_gold: '',
+    cod_land: '',
+    cod_jas: ''
+  }]);
+
+  const initialValues = {
+    pro_codigo: '',
+    cod_gold: '',
+    cod_land: '',
+    cod_jas: ''
+  }
+
+  // const updateKeys = async () => {
+  //   await fetch(`http://localhost:3002/chaves?pro_codigo=${values.pro_codigo}`)
+  //     .then(response => response.json())
+  //     .then(data => setKeys(data))
+  // }
+
   return (
     <Formik
-      initialValues={{
-        pro_codigo: '',
-        cod_gold: '',
-        cod_land: '',
-        cod_jas: ''
-      }}
-
+      initialValues={initialValues || keys}
       // validationSchema={subscribeSchema}
 
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      // onSubmit={(values, { setSubmitting }) => {
+      //   setTimeout(() => {
+      //     alert(JSON.stringify(values, null, 2));
+      //     setSubmitting(false);
+      //   }, 400);
+      // }}
+
+      onSubmit={async (values) => {
+        await fetch(`http://localhost:3002/chaves?pro_codigo=${values.pro_codigo}`)
+          .then(response => response.json())
+          .then(data => setKeys(data))
       }}
 
+      enableReinitialize
     >
       {({ isSubmitting, errors, handleChange }) => (
         <Flex
