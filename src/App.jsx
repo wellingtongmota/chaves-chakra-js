@@ -1,6 +1,6 @@
 import { Flex, Heading, Image } from "@chakra-ui/react"
 import bgImage from '/bgImage.png'
-import logo from '/logo_dovale2.png'
+import logo from '/logo_dovale.png'
 import ChavesForm from "./components/ChavesForm"
 
 const App = () => {
