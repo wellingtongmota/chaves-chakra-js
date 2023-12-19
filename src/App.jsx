@@ -28,7 +28,7 @@ const App = () => {
         overflowY='auto'
         flexDirection='column'
         py={[4, 6]}
-        px={[4, 6, 8]}
+        px={[4, 8]}
         gap={8}
       >
 
