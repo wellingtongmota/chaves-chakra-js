@@ -1,5 +1,7 @@
-import { Flex, Heading } from "@chakra-ui/react"
+import { Flex, Heading, Image } from "@chakra-ui/react"
 import bgImage from '/bgImage.png'
+import logo from '/logo_dovale2.png'
+import ChavesForm from "./components/ChavesForm"
 
 const App = () => {
   return (
@@ -16,20 +18,35 @@ const App = () => {
       flexDirection='column'
       justify='center'
       align='center'
-      py={[2, 4, 8]}
-      gap={[2, 4, 6]}
-      px={[2, 4]}
+      p={[2, 4]}
     >
 
       <Flex
         bg='whiteAlpha.900'
-        maxW='xl'
+        maxW='md'
         w='full'
+        overflowY='auto'
         flexDirection='column'
-        py={[4, 8]}
+        py={[4, 6]}
         px={[4, 6, 8]}
+        gap={8}
       >
-        <Heading textTransform='uppercase' textAlign='center'>Tabela conversão de chaves</Heading>
+
+        <Flex gap={4} flexDirection='column' alignItems='center'>
+          <Flex justify='center' w={'85%'}>
+            <Image src={logo} alt='Logo Dovale' />
+          </Flex>
+          <Heading
+            fontSize='x-large'
+            textTransform='uppercase'
+            textAlign='center'
+            fontWeight='extrabold'
+          >
+            Conversão de Chaves
+          </Heading>
+        </Flex>
+
+        <ChavesForm />
       </Flex>
     </Flex>
   )
