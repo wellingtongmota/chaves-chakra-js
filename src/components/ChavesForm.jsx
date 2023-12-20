@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Flex, Text } from "@chakra-ui/react";
 import { Form, Formik } from "formik"
+import * as Yup from 'yup'
 import ChavesInput from "./ChavesInput";
 
 const ChavesForm = () => {
@@ -8,6 +9,17 @@ const ChavesForm = () => {
   const [lastValue, setLastValue] = useState({
     field: '',
     value: ''
+  });
+
+  const chavesSchema = Yup.object().shape({
+    pro_codigo: Yup.string()
+      .matches(/^[0-9]+$/, 'Número inválido', { excludeEmptyString: true }),
+    cod_gold: Yup.string()
+      .matches(/^[0-9]+$/, 'Número inválido', { excludeEmptyString: true }),
+    cod_land: Yup.string()
+      .matches(/^[0-9]+$/, 'Número inválido', { excludeEmptyString: true }),
+    cod_jas: Yup.string()
+      .matches(/^[0-9]+$/, 'Número inválido', { excludeEmptyString: true }),
   });
 
   return (
@@ -21,7 +33,7 @@ const ChavesForm = () => {
         subgrupo: ''
       }}
 
-      // validationSchema={subscribeSchema}
+      validationSchema={chavesSchema}
 
       onSubmit={async (values, { setValues }) => {
 
@@ -39,7 +51,7 @@ const ChavesForm = () => {
         })
       }}
     >
-      {({ isSubmitting, errors, values, handleChange }) => (
+      {({ isSubmitting, errors, isValid, dirty, values, handleChange }) => (
         <Flex
           flexDirection='column'
           gap={4}
@@ -116,6 +128,7 @@ const ChavesForm = () => {
               colorScheme='blue'
               isLoading={isSubmitting}
               loadingText='Pesquisando'
+              isDisabled={!(isValid && dirty)}
             >
               Pesquisar chave
             </Button>
