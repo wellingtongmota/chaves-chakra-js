@@ -37,7 +37,7 @@ const ChavesForm = () => {
 
       onSubmit={async (values, { setValues }) => {
 
-        const response = await fetch(`http://192.168.10.8:3002/chaves?${lastValue.field}=${lastValue.value}`)
+        const response = await fetch(`${import.meta.env.VITE_API_MICROSYS}/chaves?${lastValue.field}=${lastValue.value}`)
 
         const data = await response.json()
 
