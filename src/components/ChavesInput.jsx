@@ -8,10 +8,11 @@ import {
 } from '@chakra-ui/react'
 import { Field } from 'formik'
 
-const ChavesInput = ({ label, name, value, type = 'text', icon, placeholder, errors, onChange }) => {
+const ChavesInput = ({ label, name, value, type = 'text', icon, placeholder, errors, onChange, onBlur }) => {
 
   // função handle
   const handleChange = e => onChange(e)
+  const handleBlur = e => onBlur(e)
 
   return (
     <FormControl>
@@ -35,6 +36,7 @@ const ChavesInput = ({ label, name, value, type = 'text', icon, placeholder, err
           borderColor='gray.500'
           borderRadius='none'
           onChange={handleChange}
+          onBlur={handleBlur}
         />
       </InputGroup>
       {errors &&
