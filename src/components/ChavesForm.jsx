@@ -37,7 +37,7 @@ const ChavesForm = () => {
 
       onSubmit={async (values, { setValues }) => {
 
-        const response = await fetch(`http://localhost:3002/chaves?${lastValue.field}=${lastValue.value}`)
+        const response = await fetch(`http://192.168.10.8:3002/chaves?${lastValue.field}=${lastValue.value}`)
 
         const data = await response.json()
 
@@ -110,9 +110,10 @@ const ChavesForm = () => {
             <Text><span>Subgrupo: </span>{values.subgrupo}</Text>
           </Flex>
 
-          <Flex w='full' gap={2} mt={2}>
+          <Flex w='full' gap={2} mt={2} flexWrap='wrap'>
             <Button
               flex={1}
+              flexBasis={180}
               type="reset"
               letterSpacing='wider'
               colorScheme="blue"
@@ -123,6 +124,7 @@ const ChavesForm = () => {
 
             <Button
               flex={1}
+              flexBasis={180}
               type='submit'
               letterSpacing='wider'
               colorScheme='blue'
