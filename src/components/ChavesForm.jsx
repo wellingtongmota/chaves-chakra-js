@@ -1,8 +1,14 @@
+import { useState } from "react";
 import { Button, Flex, Text } from "@chakra-ui/react";
 import { Form, Formik } from "formik"
 import ChavesInput from "./ChavesInput";
 
 const ChavesForm = () => {
+
+  const [lastValue, setLastValue] = useState({
+    field: '',
+    value: ''
+  });
 
   return (
     <Formik
@@ -18,7 +24,8 @@ const ChavesForm = () => {
       // validationSchema={subscribeSchema}
 
       onSubmit={async (values, { setValues }) => {
-        const response = await fetch(`http://localhost:3002/chaves?pro_codigo=${values.pro_codigo}`)
+
+        const response = await fetch(`http://localhost:3002/chaves?${lastValue.field}=${lastValue.value}`)
 
         const data = await response.json()
 
@@ -42,6 +49,10 @@ const ChavesForm = () => {
             label='Cód. Dovale: '
             name='pro_codigo'
             onChange={handleChange}
+            onBlur={e => setLastValue({
+              field: e.target.name,
+              value: e.target.value,
+            })}
             value={values.pro_codigo}
             errors={errors.pro_codigo}
           />
@@ -50,6 +61,10 @@ const ChavesForm = () => {
             label='Cód. Gold: '
             name='cod_gold'
             onChange={handleChange}
+            onBlur={e => setLastValue({
+              field: e.target.name,
+              value: e.target.value,
+            })}
             value={values.cod_gold}
             errors={errors.cod_gold}
           />
@@ -58,6 +73,10 @@ const ChavesForm = () => {
             label='Cód. Land: '
             name='cod_land'
             onChange={handleChange}
+            onBlur={e => setLastValue({
+              field: e.target.name,
+              value: e.target.value,
+            })}
             value={values.cod_land}
             errors={errors.cod_land}
           />
@@ -66,6 +85,10 @@ const ChavesForm = () => {
             label='Cód. Jas: '
             name='cod_jas'
             onChange={handleChange}
+            onBlur={e => setLastValue({
+              field: e.target.name,
+              value: e.target.value,
+            })}
             value={values.cod_jas}
             errors={errors.cod_jas}
           />
